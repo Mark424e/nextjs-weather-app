@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Weather from '@/components/Weather';
 import WeatherDetails from '@/components/WeatherDetails';
-import SearchBar from '@/components/SearchBar';
+import Header from '@/components/Header';
 import { fetchWeatherData } from '@/utils/weatherApi';
 import { fetchAirQualityData } from '@/utils/airQualityApi';
 import { WeatherData, AirQualityData } from '@/types/weather';
@@ -55,9 +55,7 @@ export default function Home() {
 
   return (
     <main className="p-10">
-      <h1 className="text-3xl font-bold mb-4">Weather App</h1>
-
-      <SearchBar onSearch={handleSearch} />
+      <Header onSearch={handleSearch} />
 
       <div className="mt-6 grid grid-cols-1 lg:grid-cols-4 gap-6">
         {loading ? (

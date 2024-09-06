@@ -9,10 +9,10 @@ interface FeelsLikeProps {
 
 const FeelsLike: React.FC<FeelsLikeProps> = ({ weather }) => {
   return (
-    <div className="p-8 bg-gray-950/20 rounded-3xl">
+    <div className="p-8 bg-accent rounded-3xl">
       <div className="mb-8">
         <div className="flex justify-between items-center">
-          <p className="text-gray-600">Feels Like</p>
+          <p className="text-text/30">Feels Like</p>
         </div>
       </div>
       <div className="flex justify-between items-center mb-8">

@@ -9,10 +9,10 @@ interface VisibilityProps {
 
 const Visibility: React.FC<VisibilityProps> = ({ weather }) => {
   return (
-    <div className="p-8 bg-gray-950/20 rounded-3xl">
+    <div className="p-8 bg-accent rounded-3xl">
       <div className="mb-8">
         <div className="flex justify-between items-center">
-          <p className="text-gray-600">Visibility</p>
+          <p className="text-text/30">Visibility</p>
         </div>
       </div>
       <div className="flex justify-between items-center mb-8">

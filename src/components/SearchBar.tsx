@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 
 interface SearchBarProps {
   onSearch: (city: string) => void;
@@ -28,16 +29,18 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
       <form onSubmit={handleSubmit} className="flex items-center gap-4">
         <input
           type="text"
-          className="focus:outline-none border border-gray-300 rounded-md px-4 py-2 text-black"
+          className="focus:outline-none bg-card rounded-full ps-12 p-3 text-text text-sm w-full"
           value={city}
           onChange={handleInputChange}
           placeholder="Enter city"
         />
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
-        >
-          Search
+        <button type="submit" className="absolute left-4">
+          <Image
+            src="/assets/search.svg"
+            alt="Search Icon"
+            width={18}
+            height={18}
+          />
         </button>
       </form>
 

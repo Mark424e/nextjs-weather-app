@@ -32,10 +32,10 @@ const AirQuality: React.FC<AirQualityProps> = ({ airQuality }) => {
   const backgroundColorClass = getBackgroundColorClass(aqiDescription);
 
   return (
-    <div className="col-span-2 p-8 bg-gray-950/20 rounded-3xl">
+    <div className="col-span-2 p-8 bg-accent rounded-3xl">
       <div className="mb-8">
         <div className="flex justify-between items-center">
-          <p className="text-gray-600">Air Quality Index</p>
+          <p className="text-text/30">Air Quality Index</p>
           <div
             className={`text-gray-950 ${backgroundColorClass} px-3 rounded-full`}
           >
@@ -54,19 +54,19 @@ const AirQuality: React.FC<AirQualityProps> = ({ airQuality }) => {
           />
         </div>
         <div className="flex flex-col items-center">
-          <p className="text-gray-600">PM2.5</p>
+          <p className="text-text/30">PM2.5</p>
           <p className="text-4xl">{airQuality.list[0].components.pm2_5}</p>
         </div>
         <div className="flex flex-col items-center">
-          <p className="text-gray-600">SO2</p>
+          <p className="text-text/30">SO2</p>
           <p className="text-4xl">{airQuality.list[0].components.so2}</p>
         </div>
         <div className="flex flex-col items-center">
-          <p className="text-gray-600">NO2</p>
+          <p className="text-text/30">NO2</p>
           <p className="text-4xl">{airQuality.list[0].components.no2}</p>
         </div>
         <div className="flex flex-col items-center">
-          <p className="text-gray-600">O3</p>
+          <p className="text-text/30">O3</p>
           <p className="text-4xl">{airQuality.list[0].components.o3}</p>
         </div>
       </div>

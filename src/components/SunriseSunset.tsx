@@ -18,10 +18,10 @@ const SunriseSunset: React.FC<SunriseSunsetProps> = ({ weather }) => {
   const timezoneOffset = weather.timezone;
 
   return (
-    <div className="col-span-2 p-8 bg-gray-950/20 rounded-3xl">
+    <div className="col-span-2 p-8 bg-accent rounded-3xl">
       <div className="mb-8">
         <div className="flex justify-between items-center">
-          <p className="text-gray-600">Sunrise & Sunset</p>
+          <p className="text-text/30">Sunrise & Sunset</p>
         </div>
       </div>
       <div className="flex justify-between items-center mb-8">
@@ -36,7 +36,7 @@ const SunriseSunset: React.FC<SunriseSunsetProps> = ({ weather }) => {
             />
           </div>
           <div>
-            <p className="text-gray-600">Sunrise:</p>
+            <p className="text-text/30">Sunrise:</p>
             <p className="text-4xl">
               {convertToLocalTime(weather.sys.sunrise, timezoneOffset)}
             </p>
@@ -51,7 +51,7 @@ const SunriseSunset: React.FC<SunriseSunsetProps> = ({ weather }) => {
             height={50}
           />
           <div>
-            <p className="text-gray-600">Sunset:</p>
+            <p className="text-text/30">Sunset:</p>
             <p className="text-4xl">
               {convertToLocalTime(weather.sys.sunset, timezoneOffset)}
             </p>

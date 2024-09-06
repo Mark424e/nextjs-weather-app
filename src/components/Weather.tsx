@@ -51,7 +51,7 @@ export default function Weather({ city }: WeatherProps) {
   };
 
   return (
-    <div className="bg-slate-700/10 p-8 rounded-3xl h-fit">
+    <div className="bg-card p-8 rounded-3xl h-fit">
       <div className="flex flex-col justify-between gap-4">
         <div className="border-b border-gray-700/50 pb-4">
           <h2 className="text-xl font-bold mb-4">Now</h2>
@@ -66,7 +66,7 @@ export default function Weather({ city }: WeatherProps) {
           </div>
           <p>{weather.weather[0].description}</p>
         </div>
-        <div className="text-gray-600">
+        <div className="text-text/30">
           <p>{getCurrentDate()}</p>
           <p>{formattedLocation}</p>
         </div>
