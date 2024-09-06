@@ -1,0 +1,65 @@
+"use client";
+
+import Image from "next/image";
+import { WeatherData } from "@/types/weather";
+
+interface SunriseSunsetProps {
+  weather: WeatherData;
+}
+
+const SunriseSunset: React.FC<SunriseSunsetProps> = ({ weather }) => {
+  // Convert Unix timestamp to local time based on timezone offset
+  const convertToLocalTime = (timestamp: number, timezoneOffset: number) => {
+    const date = new Date((timestamp + timezoneOffset) * 1000);
+    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  };
+
+  // Timezone offset in seconds from UTC
+  const timezoneOffset = weather.timezone;
+
+  return (
+    <div className="col-span-2 p-8 bg-gray-950/20 rounded-3xl">
+      <div className="mb-8">
+        <div className="flex justify-between items-center">
+          <p className="text-gray-600">Sunrise & Sunset</p>
+        </div>
+      </div>
+      <div className="flex justify-between items-center mb-8">
+        <div className="flex items-end gap-8">
+          <div>
+            <Image
+              className="w-[50px] h-[50px]"
+              src="/assets/sun.svg"
+              alt="Sun Icon"
+              width={50}
+              height={50}
+            />
+          </div>
+          <div>
+            <p className="text-gray-600">Sunrise:</p>
+            <p className="text-4xl">
+              {convertToLocalTime(weather.sys.sunrise, timezoneOffset)}
+            </p>
+          </div>
+        </div>
+        <div className="flex items-end gap-8">
+          <Image
+            className="w-[50px] h-[50px]"
+            src="/assets/moon.svg"
+            alt="Moon Icon"
+            width={50}
+            height={50}
+          />
+          <div>
+            <p className="text-gray-600">Sunset:</p>
+            <p className="text-4xl">
+              {convertToLocalTime(weather.sys.sunset, timezoneOffset)}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SunriseSunset;
