@@ -66,9 +66,25 @@ export default function Weather({ city }: WeatherProps) {
           </div>
           <p>{weather.weather[0].description}</p>
         </div>
-        <div className="text-text/30">
-          <p>{getCurrentDate()}</p>
+        <div className="text-text/30 space-y-3">
+          <div className="flex items-center gap-4">
+            <Image
+              src="/assets/calendar.svg"
+              alt="Calendar Icon"
+              width={15}
+              height={15}
+            />
+            <p>{getCurrentDate()}</p>
+          </div>
+          <div className="flex items-center gap-4">
+            <Image
+              src="/assets/location-dot.svg"
+              alt="Location Icon"
+              width={15}
+              height={15}
+            />
           <p>{formattedLocation}</p>
+          </div>
         </div>
       </div>
     </div>
