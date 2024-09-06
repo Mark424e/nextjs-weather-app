@@ -18,7 +18,7 @@ const Humidity: React.FC<HumidityProps> = ({ weather }) => {
       <div className="flex justify-between items-center mb-8">
         <div>
           <Image
-            className="w-[50px] h-[50px]"
+            className="min-w-[50px] h-[50px]"
             src="/assets/droplet.svg"
             alt="Droplet Icon"
             width={50}
@@ -26,7 +26,7 @@ const Humidity: React.FC<HumidityProps> = ({ weather }) => {
           />
         </div>
         <div>
-          <p className="text-4xl">{weather.main.humidity}%</p>
+          <p className="text-2xl"><span className="text-4xl">{weather.main.humidity}</span>%</p>
         </div>
       </div>
     </div>

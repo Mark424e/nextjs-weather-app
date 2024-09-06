@@ -54,3 +54,17 @@ export interface WeatherData {
   name: string;
   cod: number;
 }
+
+export interface ForecastData {
+  list: Array<{
+    dt: number;
+    main: {
+      temp: number;
+    };
+    weather: Array<{
+      icon: string;
+      description: string;
+    }>;
+    dt_txt: string;
+  }>;
+}

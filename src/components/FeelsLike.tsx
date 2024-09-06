@@ -18,7 +18,7 @@ const FeelsLike: React.FC<FeelsLikeProps> = ({ weather }) => {
       <div className="flex justify-between items-center mb-8">
         <div>
           <Image
-            className="w-[50px] h-[50px]"
+            className="min-w-[50px] h-[50px]"
             src="/assets/temperature.svg"
             alt="Feels Like Icon"
             width={50}
@@ -26,7 +26,12 @@ const FeelsLike: React.FC<FeelsLikeProps> = ({ weather }) => {
           />
         </div>
         <div>
-          <p className="text-4xl">{Math.round(weather.main.feels_like)}°C</p>
+          <p className="text-2xl">
+            <span className="text-4xl">
+              {Math.round(weather.main.feels_like)}
+            </span>
+            °C
+          </p>
         </div>
       </div>
     </div>

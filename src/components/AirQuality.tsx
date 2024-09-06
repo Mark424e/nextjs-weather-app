@@ -32,7 +32,7 @@ const AirQuality: React.FC<AirQualityProps> = ({ airQuality }) => {
   const backgroundColorClass = getBackgroundColorClass(aqiDescription);
 
   return (
-    <div className="col-span-2 p-8 bg-accent rounded-3xl">
+    <div className="lg:col-span-2 p-8 bg-accent rounded-3xl">
       <div className="mb-8">
         <div className="flex justify-between items-center">
           <p className="text-text/30">Air Quality Index</p>
@@ -43,29 +43,29 @@ const AirQuality: React.FC<AirQualityProps> = ({ airQuality }) => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col lg:flex-row justify-between lg:items-center mb-8">
         <div>
           <Image
-            className="w-[50px] h-[50px]"
+            className="min-w-[50px] h-[50px] mb-8 lg:mb-0"
             src="/assets/wind.svg"
             alt="Wind Icon"
             width={50}
             height={50}
           />
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col lg:items-center">
           <p className="text-text/30">PM2.5</p>
           <p className="text-4xl">{airQuality.list[0].components.pm2_5}</p>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col lg:items-center">
           <p className="text-text/30">SO2</p>
           <p className="text-4xl">{airQuality.list[0].components.so2}</p>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col lg:items-center">
           <p className="text-text/30">NO2</p>
           <p className="text-4xl">{airQuality.list[0].components.no2}</p>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col lg:items-center">
           <p className="text-text/30">O3</p>
           <p className="text-4xl">{airQuality.list[0].components.o3}</p>
         </div>

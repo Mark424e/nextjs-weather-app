@@ -18,17 +18,17 @@ const SunriseSunset: React.FC<SunriseSunsetProps> = ({ weather }) => {
   const timezoneOffset = weather.timezone;
 
   return (
-    <div className="col-span-2 p-8 bg-accent rounded-3xl">
+    <div className="lg:col-span-2 p-8 bg-accent rounded-3xl">
       <div className="mb-8">
-        <div className="flex justify-between items-center">
+        <div>
           <p className="text-text/30">Sunrise & Sunset</p>
         </div>
       </div>
-      <div className="flex justify-between items-center mb-8">
-        <div className="flex items-end gap-8">
+      <div className="grid lg:grid-cols-2 mb-8">
+        <div className="flex items-end justify-between lg:justify-start gap-8">
           <div>
             <Image
-              className="w-[50px] h-[50px]"
+              className="min-w-[50px] h-[50px]"
               src="/assets/sun.svg"
               alt="Sun Icon"
               width={50}
@@ -42,9 +42,9 @@ const SunriseSunset: React.FC<SunriseSunsetProps> = ({ weather }) => {
             </p>
           </div>
         </div>
-        <div className="flex items-end gap-8">
+        <div className="flex items-end justify-between lg:justify-start gap-8">
           <Image
-            className="w-[50px] h-[50px]"
+            className="min-w-[50px] h-[50px]"
             src="/assets/moon.svg"
             alt="Moon Icon"
             width={50}

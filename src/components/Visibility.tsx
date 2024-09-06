@@ -18,7 +18,7 @@ const Visibility: React.FC<VisibilityProps> = ({ weather }) => {
       <div className="flex justify-between items-center mb-8">
         <div>
           <Image
-            className="w-[50px] h-[50px]"
+            className="min-w-[50px] h-[50px]"
             src="/assets/eye.svg"
             alt="Eye Icon"
             width={50}
@@ -26,7 +26,9 @@ const Visibility: React.FC<VisibilityProps> = ({ weather }) => {
           />
         </div>
         <div>
-          <p className="text-4xl">{weather.visibility / 1000} km</p>
+          <p className="text-2xl">
+            <span className="text-4xl">{weather.visibility / 1000}</span>km
+          </p>
         </div>
       </div>
     </div>

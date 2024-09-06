@@ -18,7 +18,7 @@ const Pressure: React.FC<PressureProps> = ({ weather }) => {
       <div className="flex justify-between items-center mb-8">
         <div>
           <Image
-            className="w-[50px] h-[50px]"
+            className="min-w-[50px] h-[50px]"
             src="/assets/pressure.svg"
             alt="Pressure Icon"
             width={50}
@@ -26,7 +26,9 @@ const Pressure: React.FC<PressureProps> = ({ weather }) => {
           />
         </div>
         <div>
-          <p className="text-4xl">{weather.main.pressure} hPa</p>
+          <p className="text-2xl">
+            <span className="text-4xl">{weather.main.pressure}</span>hPa
+          </p>
         </div>
       </div>
     </div>
