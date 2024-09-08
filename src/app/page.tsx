@@ -4,25 +4,25 @@ import { useEffect, useState } from "react";
 import Weather from "@/components/Weather";
 import WeatherDetails from "@/components/WeatherDetails";
 import Header from "@/components/Header";
-import { fetchWeatherData } from "@/utils/weatherApi";
+import { fetchWeatherData, fetchForecastData } from "@/utils/weatherApi"; // Grouped imports
 import { fetchAirQualityData } from "@/utils/airQualityApi";
 import { WeatherData, AirQualityData, ForecastData } from "@/types/weather";
-import { fetchForecastData } from "@/utils/weatherApi";
 import Forecast from "@/components/Forecast";
+import HourlyForecast from "@/components/HourlyForecast";
 
 export default function Home() {
-  const [city, setCity] = useState("New York");
+  const [city, setCity] = useState("Copenhagen"); // Start with default city
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [airQuality, setAirQuality] = useState<AirQualityData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [forecast, setForecast] = useState<ForecastData | null>(null);
-  const [forecastError, setForecastError] = useState<string | null>(null); // New error state for forecast
+  const [forecastError, setForecastError] = useState<string | null>(null);
 
   useEffect(() => {
     const getWeatherAndAirQuality = async () => {
       setLoading(true);
-      setError(null); // Reset error state before fetching data
+      setError(null);
 
       const weatherData = await fetchWeatherData(city);
       if (typeof weatherData === "string") {
@@ -32,7 +32,6 @@ export default function Home() {
       } else {
         setWeather(weatherData);
 
-        // Fetch air quality data based on weather coordinates
         const lat = weatherData?.coord?.lat;
         const lon = weatherData?.coord?.lon;
         if (lat !== undefined && lon !== undefined) {
@@ -54,11 +53,11 @@ export default function Home() {
       const forecastData = await fetchForecastData(city);
 
       if (typeof forecastData === "string") {
-        setForecastError(forecastData); // Set forecast error message
-        setForecast(null); // Clear forecast data in case of error
+        setForecastError(forecastData);
+        setForecast(null);
       } else {
-        setForecast(forecastData); // Set forecast data
-        setForecastError(null); // Clear forecast error
+        setForecast(forecastData);
+        setForecastError(null);
       }
     };
 
@@ -66,33 +65,39 @@ export default function Home() {
     getForecast();
   }, [city]);
 
-  const handleSearch = async (newCity: string) => {
+  // Function to handle city change from the SearchBar
+  const handleSearch = (newCity: string) => {
     setCity(newCity);
   };
 
   return (
-    <main className="p-10">
-      <Header onSearch={handleSearch} />
-
-      <div className="mt-6 grid grid-cols-4 gap-6">
+    <main>
+      <Header onSearch={handleSearch} />{" "}
+      {/* Pass the handleSearch function to the Header */}
+      <div className="md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 p-10 pt-32">
         {loading ? (
           <p>Loading...</p>
         ) : error ? (
           <p className="text-red-500">{error}</p>
         ) : (
           <>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-8">
               {weather && <Weather city={city} />}
-
               {forecastError ? (
                 <p className="text-red-500">{forecastError}</p>
               ) : (
                 forecast && <Forecast forecast={forecast} />
               )}
             </div>
-            {weather && airQuality && (
-              <WeatherDetails weather={weather} airQuality={airQuality} />
-            )}
+
+            <div className="col-span-3 flex flex-col gap-8">
+              {weather && airQuality && (
+                <>
+                  <WeatherDetails weather={weather} airQuality={airQuality} />
+                  <HourlyForecast city={city} />
+                </>
+              )}
+            </div>
           </>
         )}
       </div>

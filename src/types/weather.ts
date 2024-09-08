@@ -56,15 +56,22 @@ export interface WeatherData {
 }
 
 export interface ForecastData {
-  list: Array<{
+  city: {
+    timezone: number;
+  };
+  list: {
     dt: number;
     main: {
       temp: number;
     };
-    weather: Array<{
+    weather: {
       icon: string;
       description: string;
-    }>;
+    }[];
+    wind: {
+      speed: number;
+      deg: number;
+    };
     dt_txt: string;
-  }>;
+  }[];
 }
