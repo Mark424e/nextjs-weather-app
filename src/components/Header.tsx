@@ -1,17 +1,34 @@
 "use client";
 
 import SearchBar from "@/components/SearchBar";
+import ModeToggle from "@/components/LightDark";
 
 interface HeaderProps {
   onSearch: (city: string) => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ onSearch }) => {
+  const handleRefresh = () => {
+    window.location.reload(); // Refreshes the page
+  };
+
   return (
-    <header className="w-full fixed bg-background px-10 py-6 shadow-md">
+    <header className="bg-background">
       <div className="grid grid-cols-1 md:grid-cols-3 justify-between items-center">
-        <h1 className="hidden md:block text-white text-2xl font-bold">Weather App</h1>
-        <SearchBar onSearch={onSearch} />
+        <div>
+          <h1
+            onClick={handleRefresh}
+            className="hidden md:block text-white text-2xl font-bold cursor-pointer w-fit"
+          >
+            Weather App
+          </h1>
+        </div>
+        <div>
+          <SearchBar onSearch={onSearch} />
+        </div>
+        <div className="grid justify-end">
+          <ModeToggle />
+        </div>
       </div>
     </header>
   );

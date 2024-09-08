@@ -55,13 +55,13 @@ export default function Weather({ city }: WeatherProps) {
       <div className="flex flex-col justify-between gap-4">
         <div className="border-b border-gray-700/50 pb-4">
           <h2 className="text-xl font-bold mb-4">Now</h2>
-          <div className="flex items-center gap-4">
-            <p className="text-5xl">{roundedTemperature}°C</p>
+          <div className="grid grid-cols-2 items-center gap-4">
+            <p className="text-7xl">{roundedTemperature}°C</p>
             <Image
               src={weatherIcon}
               alt={weather.weather[0].description}
-              width={50}
-              height={50}
+              width={80}
+              height={80}
             />
           </div>
           <p>{weather.weather[0].description}</p>
