@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { WeatherData } from '@/types/weather';
 import { ForecastData } from '@/types/weather';
 
@@ -17,7 +17,6 @@ export const fetchWeatherData = async (city: string): Promise<WeatherData | stri
     return response.data as WeatherData;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      // Handle Axios-specific errors
       if (error.response) {
         if (error.response.status === 404) {
           return 'City not found';
