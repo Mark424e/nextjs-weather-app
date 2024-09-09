@@ -7,7 +7,6 @@ import Humidity from "@/components/Humidity";
 import Pressure from "@/components/Pressure";
 import Visibility from "@/components/Visibility";
 import FeelsLike from "@/components/FeelsLike";
-import { Skeleton } from "@/components/ui/skeleton";
 
 interface WeatherDetailsProps {
   weather: WeatherData;

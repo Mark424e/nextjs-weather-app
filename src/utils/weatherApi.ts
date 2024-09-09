@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { WeatherData } from '@/types/weather';
 import { ForecastData } from '@/types/weather';
 
@@ -15,15 +15,23 @@ export const fetchWeatherData = async (city: string): Promise<WeatherData | stri
       },
     });
     return response.data as WeatherData;
-  } catch (error: any) {
-    if (error.response && error.response.status === 404) {
-      return 'City not found';
-    } else if (error.response && error.response.status === 401) {
-      return 'Invalid API key';
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      // Handle Axios-specific errors
+      if (error.response) {
+        if (error.response.status === 404) {
+          return 'City not found';
+        } else if (error.response.status === 401) {
+          return 'Invalid API key';
+        }
+      }
+      console.error('Error fetching weather data:', error.message);
+    } else if (error instanceof Error) {
+      console.error('Error fetching weather data:', error.message);
     } else {
-      console.error('Error fetching weather data:', error);
-      return 'An unexpected error occurred. Please try again later.';
+      console.error('Unexpected error:', error);
     }
+    return 'An unexpected error occurred. Please try again later.';
   }
 };
 
@@ -37,8 +45,14 @@ export const fetchForecastData = async (city: string): Promise<ForecastData | st
       },
     });
     return response.data as ForecastData;
-  } catch (error: any) {
-    console.error('Error fetching forecast data:', error);
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error('Error fetching forecast data:', error.message);
+    } else if (error instanceof Error) {
+      console.error('Error fetching forecast data:', error.message);
+    } else {
+      console.error('Unexpected error:', error);
+    }
     return 'An unexpected error occurred. Please try again later.';
   }
 };
