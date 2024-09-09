@@ -5,13 +5,22 @@ interface SearchBarProps {
   onSearch: (city: string) => void;
 }
 
+interface Suggestion {
+  id: number;
+  name: string;
+  sys: {
+    country: string;
+  };
+}
+
 const API_KEY = process.env.NEXT_PUBLIC_OPENWEATHERMAP_API_KEY;
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
 export default function SearchBar({ onSearch }: SearchBarProps) {
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [suggestions, setSuggestions] = useState<any[]>([]);
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
+
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -32,7 +41,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
           `${BASE_URL}/find?q=${e.target.value}&type=like&sort=population&appid=${API_KEY}`
         );
         const data = await response.json();
-        setSuggestions(data.list);
+        setSuggestions(data.list as Suggestion[]);
         setErrorMessage(null); // Clear any existing error message
       } catch (error) {
         console.error("Error fetching city suggestions:", error);

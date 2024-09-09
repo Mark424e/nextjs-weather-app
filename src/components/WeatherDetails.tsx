@@ -7,6 +7,7 @@ import Humidity from "@/components/Humidity";
 import Pressure from "@/components/Pressure";
 import Visibility from "@/components/Visibility";
 import FeelsLike from "@/components/FeelsLike";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface WeatherDetailsProps {
   weather: WeatherData;
@@ -19,7 +20,7 @@ const WeatherDetails: React.FC<WeatherDetailsProps> = ({
 }) => {
   return (
     <div className="lg:col-span-3 border p-8 rounded-3xl h-fit">
-      <h2 className="text-xl font-bold mb-4">Today's Highlights</h2>
+      <h2 className="text-xl font-bold mb-4">Today&apos;s Highlights</h2>
       <div className="flex flex-col lg:grid lg:grid-cols-4 gap-8">
         <AirQuality airQuality={airQuality} />
         <SunriseSunset weather={weather} />
