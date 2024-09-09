@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { AirQualityData } from "@/types/weather";
+import { Wind } from "lucide-react";
 
 interface AirQualityProps {
   airQuality: AirQualityData;
@@ -32,7 +33,7 @@ const AirQuality: React.FC<AirQualityProps> = ({ airQuality }) => {
   const backgroundColorClass = getBackgroundColorClass(aqiDescription);
 
   return (
-    <div className="lg:col-span-2 p-8 bg-accent rounded-3xl">
+    <div className="lg:col-span-2 p-8 border rounded-3xl">
       <div className="mb-8">
         <div className="flex justify-between items-center">
           <p className="text-text/30">Air Quality Index</p>
@@ -45,13 +46,7 @@ const AirQuality: React.FC<AirQualityProps> = ({ airQuality }) => {
       </div>
       <div className="flex flex-col lg:flex-row justify-between lg:items-center mb-8">
         <div>
-          <Image
-            className="min-w-[50px] h-[50px] mb-8 lg:mb-0"
-            src="/assets/wind.svg"
-            alt="Wind Icon"
-            width={50}
-            height={50}
-          />
+          <Wind className="min-h-[3.5rem] min-w-[3.5rem]" size="icon" />
         </div>
         <div className="flex flex-col lg:items-center">
           <p className="text-text/30">PM2.5</p>

@@ -8,7 +8,6 @@ const config: Config = {
   theme: {
   	extend: {
   		colors: {
-  			text: '#e1dee9',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { fetchWeatherData } from "@/utils/weatherApi";
 import { WeatherData } from "@/types/weather";
 import Image from "next/image";
+import { Calendar, MapPin } from "lucide-react";
 
 interface WeatherProps {
   city: string;
@@ -51,7 +52,7 @@ export default function Weather({ city }: WeatherProps) {
   };
 
   return (
-    <div className="bg-card p-8 rounded-3xl h-fit">
+    <div className="border p-8 rounded-3xl h-fit">
       <div className="flex flex-col justify-between gap-4">
         <div className="border-b border-gray-700/50 pb-4">
           <h2 className="text-xl font-bold mb-4">Now</h2>
@@ -66,24 +67,20 @@ export default function Weather({ city }: WeatherProps) {
           </div>
           <p>{weather.weather[0].description}</p>
         </div>
-        <div className="text-text/30 space-y-3">
+        <div className="space-y-3">
           <div className="flex items-center gap-4">
-            <Image
-              src="/assets/calendar.svg"
-              alt="Calendar Icon"
-              width={15}
-              height={15}
+            <Calendar
+              className="max-h-[1rem] max-w-[1rem] min-h-[1rem] min-w-[1rem]"
+              size="icon"
             />
             <p>{getCurrentDate()}</p>
           </div>
           <div className="flex items-center gap-4">
-            <Image
-              src="/assets/location-dot.svg"
-              alt="Location Icon"
-              width={15}
-              height={15}
+            <MapPin
+              className="max-h-[1rem] max-w-[1rem] min-h-[1rem] min-w-[1rem]"
+              size="icon"
             />
-          <p>{formattedLocation}</p>
+            <p>{formattedLocation}</p>
           </div>
         </div>
       </div>

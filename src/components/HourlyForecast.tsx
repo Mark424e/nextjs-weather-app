@@ -68,7 +68,7 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
   });
 
   return (
-    <div className="bg-card p-8 rounded-3xl">
+    <div className="border p-8 rounded-3xl">
       <h2 className="text-xl font-bold mb-4">Today at</h2>
       <div className="space-y-4">
         <div className="grid grid-cols-8 gap-4">
@@ -92,7 +92,7 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
               return (
                 <div
                   key={entry.dt}
-                  className="bg-accent p-4 rounded-xl flex flex-col items-center gap-4"
+                  className="border p-4 rounded-xl flex flex-col items-center gap-4"
                 >
                   <p>{formattedTime}</p>
                   <Image
@@ -130,7 +130,7 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
               return (
                 <div
                   key={entry.dt}
-                  className="bg-accent p-4 rounded-xl flex flex-col items-center gap-4"
+                  className="border p-4 rounded-xl flex flex-col items-center gap-4"
                 >
                   <p>{formattedTime}</p>
                   <Image

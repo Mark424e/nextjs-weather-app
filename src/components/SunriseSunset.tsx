@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { WeatherData } from "@/types/weather";
+import { Moon, Sun } from "lucide-react";
 
 interface SunriseSunsetProps {
   weather: WeatherData;
@@ -18,7 +19,7 @@ const SunriseSunset: React.FC<SunriseSunsetProps> = ({ weather }) => {
   const timezoneOffset = weather.timezone;
 
   return (
-    <div className="lg:col-span-2 p-8 bg-accent rounded-3xl">
+    <div className="lg:col-span-2 p-8 border rounded-3xl">
       <div className="mb-8">
         <div>
           <p className="text-text/30">Sunrise & Sunset</p>
@@ -27,13 +28,7 @@ const SunriseSunset: React.FC<SunriseSunsetProps> = ({ weather }) => {
       <div className="grid lg:grid-cols-2 mb-8">
         <div className="flex items-end justify-between lg:justify-start gap-8">
           <div>
-            <Image
-              className="min-w-[50px] h-[50px]"
-              src="/assets/sun.svg"
-              alt="Sun Icon"
-              width={50}
-              height={50}
-            />
+            <Sun className="min-h-[3.5rem] min-w-[3.5rem]" />
           </div>
           <div>
             <p className="text-text/30">Sunrise:</p>
@@ -43,13 +38,7 @@ const SunriseSunset: React.FC<SunriseSunsetProps> = ({ weather }) => {
           </div>
         </div>
         <div className="flex items-end justify-between lg:justify-start gap-8">
-          <Image
-            className="min-w-[50px] h-[50px]"
-            src="/assets/moon.svg"
-            alt="Moon Icon"
-            width={50}
-            height={50}
-          />
+          <Moon className="min-h-[3.5rem] min-w-[3.5rem]" />
           <div>
             <p className="text-text/30">Sunset:</p>
             <p className="text-4xl">

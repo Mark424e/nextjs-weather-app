@@ -28,7 +28,7 @@ const Forecast: React.FC<ForecastProps> = ({ forecast }) => {
   );
 
   return (
-    <div className="bg-card p-8 rounded-3xl">
+    <div className="border p-8 rounded-3xl">
       {" "}
       <h2 className="text-xl font-bold mb-4">5-Day Forecast</h2>
       <div className="space-y-4">

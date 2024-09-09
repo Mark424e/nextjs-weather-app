@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { WeatherData } from "@/types/weather";
+import { Waves } from "lucide-react";
 
 interface PressureProps {
   weather: WeatherData;
@@ -9,7 +9,7 @@ interface PressureProps {
 
 const Pressure: React.FC<PressureProps> = ({ weather }) => {
   return (
-    <div className="p-8 bg-accent rounded-3xl">
+    <div className="p-8 border rounded-3xl">
       <div className="mb-8">
         <div className="flex justify-between items-center">
           <p className="text-text/30">Pressure</p>
@@ -17,13 +17,7 @@ const Pressure: React.FC<PressureProps> = ({ weather }) => {
       </div>
       <div className="flex justify-between items-center mb-8">
         <div>
-          <Image
-            className="min-w-[50px] h-[50px]"
-            src="/assets/pressure.svg"
-            alt="Pressure Icon"
-            width={50}
-            height={50}
-          />
+          <Waves className="min-h-[3.5rem] min-w-[3.5rem]" size="icon" />
         </div>
         <div>
           <p className="text-2xl">

@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
         <div>
           <h1
             onClick={handleRefresh}
-            className="hidden md:block text-white text-2xl font-bold cursor-pointer w-fit"
+            className="hidden md:block text-2xl font-bold cursor-pointer w-fit"
           >
             Weather App
           </h1>

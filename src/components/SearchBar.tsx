@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, RefCallback } from "react";
-import Image from "next/image";
+import { Search } from "lucide-react";
 
 interface SearchBarProps {
   onSearch: (city: string) => void;
@@ -47,7 +47,11 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (city.trim() !== "") {
-      if (suggestions.some((suggestion) => suggestion.name.toLowerCase() === city.toLowerCase())) {
+      if (
+        suggestions.some(
+          (suggestion) => suggestion.name.toLowerCase() === city.toLowerCase()
+        )
+      ) {
         onSearch(city);
         setCity("");
         setSuggestions([]);
@@ -69,9 +73,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
     if (e.key === "ArrowDown") {
       e.preventDefault();
       setSelectedIndex((prevIndex) =>
-        prevIndex === null
-          ? 0
-          : Math.min(prevIndex + 1, suggestions.length - 1)
+        prevIndex === null ? 0 : Math.min(prevIndex + 1, suggestions.length - 1)
       );
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
@@ -84,7 +86,10 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
         handleSuggestionClick(suggestions[selectedIndex].name);
       } else if (city.trim() !== "" && suggestions.length > 0) {
         // Create a dummy FormEvent
-        handleSubmit({ preventDefault: () => {}, currentTarget: null } as unknown as React.FormEvent);
+        handleSubmit({
+          preventDefault: () => {},
+          currentTarget: null,
+        } as unknown as React.FormEvent);
       } else {
         setErrorMessage(`"${city}" doesn't exist`);
       }
@@ -93,7 +98,9 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
 
   useEffect(() => {
     if (selectedIndex !== null && suggestionRefs.current[selectedIndex]) {
-      suggestionRefs.current[selectedIndex]?.scrollIntoView({ block: "nearest" });
+      suggestionRefs.current[selectedIndex]?.scrollIntoView({
+        block: "nearest",
+      });
     }
   }, [selectedIndex]);
 
@@ -113,19 +120,14 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
       >
         <input
           type="text"
-          className={`focus:outline-none bg-card ps-12 p-3 text-text text-sm w-full 
+          className={`focus:outline-none border bg-card text-foreground ps-12 p-3 text-text text-sm w-full 
             ${suggestions.length > 0 ? "rounded-t-3xl" : "rounded-full"}`}
           value={city}
           onChange={handleInputChange}
           placeholder="Enter city"
         />
         <button type="submit" className="absolute left-4">
-          <Image
-            src="/assets/search.svg"
-            alt="Search Icon"
-            width={18}
-            height={18}
-          />
+          <Search className="h-[1.2rem] w-[1.2rem]" size="icon" />
         </button>
         {loading && (
           <div className="absolute right-4">
@@ -139,7 +141,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
       )}
 
       {suggestions.length > 0 && (
-        <ul className="absolute w-full bg-card shadow-lg z-50 text-sm rounded-b-3xl">
+        <ul className="absolute w-full bg-card shadow-lg border border-t-0 z-50 text-sm rounded-b-3xl">
           {suggestions.map((suggestion, index) => (
             <li
               key={suggestion.id}
