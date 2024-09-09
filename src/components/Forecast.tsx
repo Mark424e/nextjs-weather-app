@@ -2,6 +2,7 @@
 
 import { ForecastData } from "@/types/weather";
 import Image from "next/image";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
 interface ForecastProps {
   forecast: ForecastData;
@@ -28,15 +29,15 @@ const Forecast: React.FC<ForecastProps> = ({ forecast }) => {
   );
 
   return (
-    <div className="border p-8 rounded-3xl">
+    <CardContainer className="border p-8 rounded-3xl">
       {" "}
       <h2 className="text-xl font-bold mb-4">5-Day Forecast</h2>
-      <div className="space-y-4">
+      <CardBody className="space-y-4">
         {dailyForecasts.map((item, index) => {
           const { day, formattedDate } = formatDate(item.dt_txt);
 
           return (
-            <div
+            <CardItem translateZ={50}
               key={index}
               className="grid grid-cols-2 justify-between items-center"
             >
@@ -53,11 +54,11 @@ const Forecast: React.FC<ForecastProps> = ({ forecast }) => {
                 <p>{formattedDate}</p>
                 <p>{day}</p>
               </div>
-            </div>
+            </CardItem>
           );
         })}
-      </div>
-    </div>
+      </CardBody>
+    </CardContainer>
   );
 };
 

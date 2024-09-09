@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ForecastData } from "@/types/weather";
 import { fetchForecastData } from "@/utils/weatherApi";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
 interface HourlyForecastProps {
   city: string;
@@ -90,19 +91,23 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
               const windDirection = entry.wind.deg; // Wind direction in degrees
 
               return (
-                <div
-                  key={entry.dt}
-                  className="border p-4 rounded-xl flex flex-col items-center gap-4"
-                >
-                  <p>{formattedTime}</p>
-                  <Image
-                    src={weatherIcon}
-                    alt={entry.weather[0].description}
-                    width={40}
-                    height={40}
-                  />
-                  <p>{temperature}°C</p>
-                </div>
+                <CardContainer key={entry.dt}>
+                  <CardBody>
+                    <CardItem
+                      translateZ={50}
+                      className="border p-4 rounded-xl flex flex-col items-center gap-4"
+                    >
+                      <p>{formattedTime}</p>
+                      <Image
+                        src={weatherIcon}
+                        alt={entry.weather[0].description}
+                        width={40}
+                        height={40}
+                      />
+                      <p>{temperature}°C</p>
+                    </CardItem>
+                  </CardBody>
+                </CardContainer>
               );
             })
           ) : (
@@ -128,20 +133,24 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
               const windDirection = entry.wind.deg; // Wind direction in degrees
 
               return (
-                <div
-                  key={entry.dt}
-                  className="border p-4 rounded-xl flex flex-col items-center gap-4"
-                >
-                  <p>{formattedTime}</p>
-                  <Image
-                    src="/assets/direction.png"
-                    alt="Wind direction"
-                    width={40}
-                    height={40}
-                    style={{ transform: `rotate(${windDirection}deg)` }} // Rotate the wind direction icon
-                  />
-                  <p>{windSpeed} m/s</p>
-                </div>
+                <CardContainer key={entry.dt}>
+                  <CardBody>
+                    <CardItem
+                      translateZ={50}
+                      className="border p-4 rounded-xl flex flex-col items-center gap-4"
+                    >
+                      <p>{formattedTime}</p>
+                      <Image
+                        src="/assets/direction.png"
+                        alt="Wind direction"
+                        width={40}
+                        height={40}
+                        style={{ transform: `rotate(${windDirection}deg)` }} // Rotate the wind direction icon
+                      />
+                      <p>{windSpeed} m/s</p>
+                    </CardItem>
+                  </CardBody>
+                </CardContainer>
               );
             })
           ) : (

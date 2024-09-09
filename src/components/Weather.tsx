@@ -5,6 +5,7 @@ import { fetchWeatherData } from "@/utils/weatherApi";
 import { WeatherData } from "@/types/weather";
 import Image from "next/image";
 import { Calendar, MapPin } from "lucide-react";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
 interface WeatherProps {
   city: string;
@@ -52,11 +53,11 @@ export default function Weather({ city }: WeatherProps) {
   };
 
   return (
-    <div className="border p-8 rounded-3xl h-fit">
-      <div className="flex flex-col justify-between gap-4">
+    <CardContainer className="border p-8 rounded-3xl h-fit">
+      <CardBody className="flex flex-col justify-between gap-4">
         <div className="border-b border-gray-700/50 pb-4">
           <h2 className="text-xl font-bold mb-4">Now</h2>
-          <div className="grid grid-cols-2 items-center gap-4">
+          <CardItem translateZ={100} className="grid grid-cols-2 items-center gap-4">
             <p className="text-7xl">{roundedTemperature}°C</p>
             <Image
               src={weatherIcon}
@@ -64,7 +65,7 @@ export default function Weather({ city }: WeatherProps) {
               width={80}
               height={80}
             />
-          </div>
+          </CardItem>
           <p>{weather.weather[0].description}</p>
         </div>
         <div className="space-y-3">
@@ -83,7 +84,7 @@ export default function Weather({ city }: WeatherProps) {
             <p>{formattedLocation}</p>
           </div>
         </div>
-      </div>
-    </div>
+      </CardBody>
+    </CardContainer>
   );
 }
