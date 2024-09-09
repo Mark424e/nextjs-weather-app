@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
   };
 
   return (
-    <header className="bg-background">
+    <header>
       <div className="grid grid-cols-1 md:grid-cols-3 justify-between items-center">
         <div>
           <h1

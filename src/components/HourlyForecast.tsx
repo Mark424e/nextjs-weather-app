@@ -43,22 +43,17 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
     return <p>No forecast data available.</p>;
   }
 
-  // Convert timezone offset from seconds to milliseconds
   const timezoneOffset = forecast.city.timezone * 1000;
 
-  // Get the current time in UTC and adjust to the city's local time zone
   const now = new Date();
   const utcNow = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
   const localNow = new Date(utcNow.getTime() + timezoneOffset);
 
-  // Round the local time down to the nearest hour
   const roundedLocalNow = new Date(localNow.setMinutes(0, 0, 0));
 
-  // Time range for the next 24 hours
   const localNowTimestamp = roundedLocalNow.getTime();
-  const twentyFourHoursInMs = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+  const twentyFourHoursInMs = 24 * 60 * 60 * 1000;
 
-  // Filter forecast data for the next 24 hours
   const filteredList = forecast.list.filter((entry) => {
     const entryTime = new Date(entry.dt_txt).getTime();
     const entryLocalTime = new Date(entryTime + timezoneOffset);
@@ -85,10 +80,6 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
               });
               const weatherIcon = `/assets/${entry.weather[0].icon}.png`;
               const temperature = Math.round(entry.main.temp);
-
-              // Wind data
-              const windSpeed = Math.round(entry.wind.speed); // Assuming speed is in m/s
-              const windDirection = entry.wind.deg; // Wind direction in degrees
 
               return (
                 <CardContainer key={entry.dt}>
@@ -125,12 +116,9 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
                 hour: "2-digit",
                 minute: "2-digit",
               });
-              const weatherIcon = `/assets/${entry.weather[0].icon}.png`;
-              const temperature = Math.round(entry.main.temp);
 
-              // Wind data
-              const windSpeed = Math.round(entry.wind.speed); // Assuming speed is in m/s
-              const windDirection = entry.wind.deg; // Wind direction in degrees
+              const windSpeed = Math.round(entry.wind.speed);
+              const windDirection = entry.wind.deg;
 
               return (
                 <CardContainer key={entry.dt}>
@@ -145,7 +133,7 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
                         alt="Wind direction"
                         width={40}
                         height={40}
-                        style={{ transform: `rotate(${windDirection}deg)` }} // Rotate the wind direction icon
+                        style={{ transform: `rotate(${windDirection}deg)` }}
                       />
                       <p>{windSpeed} m/s</p>
                     </CardItem>

@@ -9,6 +9,7 @@ import { fetchAirQualityData } from "@/utils/airQualityApi";
 import { WeatherData, AirQualityData, ForecastData } from "@/types/weather";
 import Forecast from "@/components/Forecast";
 import HourlyForecast from "@/components/HourlyForecast";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const [city, setCity] = useState("Copenhagen"); // Start with default city
@@ -73,8 +74,7 @@ export default function Home() {
   return (
     <main className="p-10">
       <Header onSearch={handleSearch} />{" "}
-      {/* Pass the handleSearch function to the Header */}
-      <div className="md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
+      <div className="md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 my-10">
         {loading ? (
           <p>Loading...</p>
         ) : error ? (
@@ -101,6 +101,7 @@ export default function Home() {
           </>
         )}
       </div>
+      <Footer/>
     </main>
   );
 }
