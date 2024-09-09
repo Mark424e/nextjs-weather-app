@@ -48,10 +48,10 @@ const Forecast: React.FC<ForecastProps> = ({ forecast }) => {
                   width={50}
                   height={50}
                 />
-                <p className="text-2xl">{Math.round(item.main.temp)}°C</p>
+                <p className="md:text-2xl">{Math.round(item.main.temp)}°C</p>
               </div>
-              <div className="flex justify-between text-text/30">
-                <p>{formattedDate}</p>
+              <div className="flex flex-col md:flex-row justify-between text-text/30 text-end md:text-start">
+                <p className="opacity-50">{formattedDate}</p>
                 <p>{day}</p>
               </div>
             </CardItem>

@@ -55,15 +55,15 @@ export default function Weather({ city }: WeatherProps) {
   return (
     <CardContainer className="border p-8 rounded-3xl h-fit">
       <CardBody className="flex flex-col justify-between gap-4">
-        <div className="border-b border-gray-700/50 pb-4">
+        <div className="border-b pb-4">
           <h2 className="text-xl font-bold mb-4">Now</h2>
           <CardItem translateZ={100} className="grid grid-cols-2 items-center gap-4">
-            <p className="text-7xl">{roundedTemperature}°C</p>
+            <p className=" text-5xl md:text-7xl">{roundedTemperature}°C</p>
             <Image
               src={weatherIcon}
               alt={weather.weather[0].description}
-              width={80}
-              height={80}
+              width={60}
+              height={60}
             />
           </CardItem>
           <p>{weather.weather[0].description}</p>

@@ -21,13 +21,13 @@ const FeelsLike: React.FC<FeelsLikeProps> = ({ weather }) => {
           <div className="flex justify-between items-center mb-8">
             <div>
               <Thermometer
-                className="min-h-[3.5rem] min-w-[3.5rem]"
+                className="min-h-[2.5rem] min-w-[2.5rem] md:min-h-[3.5rem]"
                 size="icon"
               />
             </div>
             <div>
               <p className="text-2xl">
-                <span className="text-4xl">
+                <span className="text-2xl md:text-4xl">
                   {Math.round(weather.main.feels_like)}
                 </span>
                 °C

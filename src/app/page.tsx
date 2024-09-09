@@ -74,7 +74,7 @@ export default function Home() {
   return (
     <main className="p-10">
       <Header onSearch={handleSearch} />{" "}
-      <div className="md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 my-10">
+      <div className="md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 my-10 space-y-8 md:space-y-0">
         {loading ? (
           <p>Loading...</p>
         ) : error ? (

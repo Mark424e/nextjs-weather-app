@@ -67,7 +67,7 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
     <div className="border p-8 rounded-3xl">
       <h2 className="text-xl font-bold mb-4">Today at</h2>
       <div className="space-y-4">
-        <div className="grid grid-cols-8 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-8 gap-4">
           {filteredList.length > 0 ? (
             filteredList.map((entry) => {
               const entryTime = new Date(entry.dt_txt).getTime();
@@ -105,7 +105,7 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
             <p>No hourly data available for the next 24 hours.</p>
           )}
         </div>
-        <div className="grid grid-cols-8 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-8 gap-4">
           {filteredList.length > 0 ? (
             filteredList.map((entry) => {
               const entryTime = new Date(entry.dt_txt).getTime();
