@@ -26,7 +26,7 @@ export default function Home() {
       setLoading(true);
       setError(null);
 
-      await new Promise((resolve) => setTimeout(resolve, 2000))
+      await new Promise((resolve) => setTimeout(resolve, 1000))
 
       const weatherData = await fetchWeatherData(city);
       if (typeof weatherData === "string") {

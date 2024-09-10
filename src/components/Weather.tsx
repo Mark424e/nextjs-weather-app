@@ -18,18 +18,15 @@ interface WeatherProps {
 
 export default function Weather({ city }: WeatherProps) {
   const [weather, setWeather] = useState<WeatherData | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
 
   useHoverGlow();
 
   useEffect(() => {
     const getWeather = async () => {
-      setLoading(true);
       const data = await fetchWeatherData(city);
       if (typeof data !== "string") {
         setWeather(data);
       }
-      setLoading(false);
     };
 
     getWeather();
