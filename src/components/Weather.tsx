@@ -1,31 +1,49 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Calendar, MapPin } from "lucide-react";
 
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-
 import { useHoverGlow } from "@/hooks/useHoverGlow";
-
 import { WeatherData } from "@/types/weather";
-
 import { fetchWeatherData } from "@/utils/weatherApi";
 
 interface WeatherProps {
   city: string;
 }
 
+const weatherBackgrounds: Record<string, string> = {
+  "clear sky": "bg-sunny",
+  "few clouds": "bg-cloudy",
+  "scattered clouds": "bg-cloudy",
+  "overcast clouds": "bg-cloudy",
+  "broken clouds": "bg-cloudy",
+  "shower rain": "bg-rainy",
+  "light rain": "bg-rainy",
+  "rain": "bg-rainy",
+  "thunderstorm": "bg-stormy",
+  "snow": "bg-snowy",
+  "mist": "bg-misty",
+  // Add more mappings as needed
+};
+
 export default function Weather({ city }: WeatherProps) {
   const [weather, setWeather] = useState<WeatherData | null>(null);
+  const [bgClass, setBgClass] = useState<string>("");
 
   useHoverGlow();
 
   useEffect(() => {
     const getWeather = async () => {
       const data = await fetchWeatherData(city);
-      if (typeof data !== "string") {
+      if (typeof data === 'string') {
+        console.error(data);
+        setWeather(null);
+        setBgClass("bg-default");
+      } else {
+
         setWeather(data);
+        const description = data.weather[0].description.toLowerCase();
+        setBgClass(weatherBackgrounds[description] || "bg-default");
       }
     };
 
@@ -33,7 +51,7 @@ export default function Weather({ city }: WeatherProps) {
   }, [city]);
 
   if (!weather) {
-    return "";
+    return null;
   }
 
   const weatherIcon = `/assets/${weather.weather[0].icon}.png`;
@@ -42,7 +60,6 @@ export default function Weather({ city }: WeatherProps) {
   const countryCode = weather.sys.country;
   const formattedLocation = `${cityName}, ${countryCode}`;
 
-  // Function to get the current date in the format "Friday 6, Sep"
   const getCurrentDate = () => {
     const options: Intl.DateTimeFormatOptions = {
       weekday: "long",
@@ -53,7 +70,7 @@ export default function Weather({ city }: WeatherProps) {
   };
 
   return (
-    <CardContainer className="hoverGlow border p-8 rounded-3xl h-fit">
+    <CardContainer className={`hoverGlow border p-8 rounded-3xl h-fit ${bgClass}`}>
       <CardBody className="flex flex-col justify-between gap-4">
         <div className="border-b pb-4 space-y-4">
           <h2 className="text-xl font-bold">Now</h2>

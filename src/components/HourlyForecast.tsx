@@ -70,7 +70,7 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
   });
 
   return (
-    <div className="border p-8 rounded-3xl">
+    <div>
       <h2 className="text-xl font-bold mb-4">Today at</h2>
       <div className="space-y-4">
         <div className="grid grid-cols-2 md:grid-cols-8 gap-4">

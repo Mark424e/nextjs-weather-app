@@ -72,6 +72,65 @@
   --rotation: 2.5rad;
 }
 
+.bg-sunny {
+  background: url("../../public/images/sunny.webp") no-repeat center center;
+  background-size: cover;
+}
+
+.bg-cloudy {
+  background: url("../../public/images/cloudy.webp") no-repeat center center;
+  background-size: cover;
+}
+
+.bg-rainy {
+  background: url("../../public/images/rainy.webp") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.bg-stormy {
+  background: url("../../public/images/stormy.webp") no-repeat center center;
+  background-size: cover;
+}
+
+.bg-snowy {
+  background: url("../../public/images/snowy.webp") no-repeat center center;
+  background-size: cover;
+}
+
+.bg-misty {
+  background: url("../../public/images/misty.webp") no-repeat center center;
+  background-size: cover;
+}
+
+.bg-default {
+  background: url("/images/default.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.bg-sunny::before,
+.bg-cloudy::before,
+.bg-rainy::before,
+.bg-stormy::before,
+.bg-snowy::before,
+.bg-misty::before,
+.bg-default::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  pointer-events: none;
+}
+
 /* 'sm': '640px', */
 @media (min-width: 640px) {
 }
@@ -88,7 +147,7 @@
 
   .hoverGlow:hover {
     border: 1px solid transparent;
-    border-radius: 20px;
+    border-radius: 1.5rem;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
       0 2px 15px rgba(255, 255, 255, 0.1);
     background-image: linear-gradient(black, black),
