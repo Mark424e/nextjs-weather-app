@@ -147,7 +147,6 @@
 
   .hoverGlow:hover {
     border: 1px solid transparent;
-    border-radius: 1.5rem;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
       0 2px 15px rgba(255, 255, 255, 0.1);
     background-image: linear-gradient(black, black),
