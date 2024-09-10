@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function SkeletonHourly() {
   return (
-    <div className="border p-8 rounded-3xl">
+    <div className="rounded-3xl">
       <Skeleton className="w-[80px] h-[28px] rounded-lg mb-4" />
       <div className="space-y-4">
         <div className="grid grid-cols-2 md:grid-cols-8 gap-4">

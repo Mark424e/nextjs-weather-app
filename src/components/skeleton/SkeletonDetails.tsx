@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function SkeletonDetails() {
   return (
-    <div className="lg:col-span-3 border p-8 rounded-3xl h-fit">
+    <div className="lg:col-span-3 rounded-3xl h-fit">
       <Skeleton className="w-1/6 h-[28px] rounded-lg mb-4" />
       <div className="flex flex-col lg:grid lg:grid-cols-4 gap-8">
         <div className="lg:col-span-2">
