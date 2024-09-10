@@ -1,12 +1,13 @@
 "use client";
 
-import { WeatherData, AirQualityData } from "@/types/weather";
 import AirQuality from "@/components/AirQuality";
 import SunriseSunset from "@/components/SunriseSunset";
 import Humidity from "@/components/Humidity";
 import Pressure from "@/components/Pressure";
 import Visibility from "@/components/Visibility";
 import FeelsLike from "@/components/FeelsLike";
+
+import { WeatherData, AirQualityData } from "@/types/weather";
 
 interface WeatherDetailsProps {
   weather: WeatherData;

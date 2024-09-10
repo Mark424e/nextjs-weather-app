@@ -67,3 +67,41 @@
     @apply bg-background text-foreground;
   }
 }
+
+:root {
+  --rotation: 2.5rad;
+}
+
+/* 'sm': '640px', */
+@media (min-width: 640px) {
+}
+
+/* 'md': '768px', */
+@media (min-width: 768px) {
+}
+
+/* 'lg': '1024px', */
+@media (min-width: 1024px) {
+  .hoverGlow {
+    background-image: transparent;
+  }
+
+  .hoverGlow:hover {
+    border: 1px solid transparent;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
+      0 2px 15px rgba(255, 255, 255, 0.1);
+    background-image: linear-gradient(black, black),
+      linear-gradient(calc(var(--rotation)), #888 0%, #444 20%, transparent 80%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+}
+
+/* 'xl': '1280px', */
+@media (min-width: 1280px) {
+}
+
+/* '2xl': '1536px', */
+@media (min-width: 1536px) {
+}

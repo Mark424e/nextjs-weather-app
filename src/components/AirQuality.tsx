@@ -1,14 +1,19 @@
 "use client";
 
-import { AirQualityData } from "@/types/weather";
 import { Wind } from "lucide-react";
+
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+
+import { useHoverGlow } from "@/hooks/useHoverGlow";
+
+import { AirQualityData } from "@/types/weather";
 
 interface AirQualityProps {
   airQuality: AirQualityData;
 }
 
 const AirQuality: React.FC<AirQualityProps> = ({ airQuality }) => {
+  useHoverGlow();
   const aqiDescription = ["Good", "Fair", "Moderate", "Poor", "Very Poor"][
     airQuality.list[0].main.aqi - 1
   ];
@@ -36,7 +41,7 @@ const AirQuality: React.FC<AirQualityProps> = ({ airQuality }) => {
     <div className="lg:col-span-2">
       <CardContainer>
         <CardBody>
-          <CardItem className="p-8 border rounded-3xl" translateZ={50}>
+          <CardItem className="hoverGlow p-8 border rounded-3xl" translateZ={50}>
             <div className="mb-8">
               <div className="flex flex-col md:justify-between md:flex-row md:items-center space-y-4 md:space-y-0">
                 <p>Air Quality Index</p>
@@ -59,15 +64,21 @@ const AirQuality: React.FC<AirQualityProps> = ({ airQuality }) => {
               </div>
               <div className="flex flex-col lg:items-center">
                 <p className="opacity-50">SO2</p>
-                <p className="text-2xl md:text-4xl">{airQuality.list[0].components.so2}</p>
+                <p className="text-2xl md:text-4xl">
+                  {airQuality.list[0].components.so2}
+                </p>
               </div>
               <div className="flex flex-col lg:items-center">
                 <p className="opacity-50">NO2</p>
-                <p className="text-2xl md:text-4xl">{airQuality.list[0].components.no2}</p>
+                <p className="text-2xl md:text-4xl">
+                  {airQuality.list[0].components.no2}
+                </p>
               </div>
               <div className="flex flex-col lg:items-center">
                 <p className="opacity-50">O3</p>
-                <p className="text-2xl md:text-4xl">{airQuality.list[0].components.o3}</p>
+                <p className="text-2xl md:text-4xl">
+                  {airQuality.list[0].components.o3}
+                </p>
               </div>
             </div>
           </CardItem>

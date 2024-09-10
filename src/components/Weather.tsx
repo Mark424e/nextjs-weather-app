@@ -1,11 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { fetchWeatherData } from "@/utils/weatherApi";
-import { WeatherData } from "@/types/weather";
 import Image from "next/image";
 import { Calendar, MapPin } from "lucide-react";
+
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+
+import { useHoverGlow } from "@/hooks/useHoverGlow";
+
+import { WeatherData } from "@/types/weather";
+
+import { fetchWeatherData } from "@/utils/weatherApi";
 
 interface WeatherProps {
   city: string;
@@ -14,6 +19,8 @@ interface WeatherProps {
 export default function Weather({ city }: WeatherProps) {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+
+  useHoverGlow();
 
   useEffect(() => {
     const getWeather = async () => {
@@ -53,11 +60,14 @@ export default function Weather({ city }: WeatherProps) {
   };
 
   return (
-    <CardContainer className="border p-8 rounded-3xl h-fit">
+    <CardContainer className="hoverGlow border p-8 rounded-3xl h-fit">
       <CardBody className="flex flex-col justify-between gap-4">
         <div className="border-b pb-4">
           <h2 className="text-xl font-bold mb-4">Now</h2>
-          <CardItem translateZ={100} className="grid grid-cols-2 items-center gap-4">
+          <CardItem
+            translateZ={100}
+            className="grid grid-cols-2 items-center gap-4"
+          >
             <p className=" text-5xl md:text-7xl">{roundedTemperature}°C</p>
             <Image
               src={weatherIcon}

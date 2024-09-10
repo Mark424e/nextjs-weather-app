@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { ForecastData } from "@/types/weather";
-import { fetchForecastData } from "@/utils/weatherApi";
+
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+
+import { useHoverGlow } from "@/hooks/useHoverGlow";
+
+import { ForecastData } from "@/types/weather";
+
+import { fetchForecastData } from "@/utils/weatherApi";
 
 interface HourlyForecastProps {
   city: string;
 }
 
 const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
+  useHoverGlow();
   const [forecast, setForecast] = useState<ForecastData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -86,15 +92,17 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
                   <CardBody>
                     <CardItem
                       translateZ={50}
-                      className="border p-4 rounded-xl flex flex-col items-center gap-4"
+                      className="hoverGlow border p-4 rounded-xl flex flex-col items-center gap-4"
                     >
                       <p>{formattedTime}</p>
-                      <Image
-                        src={weatherIcon}
-                        alt={entry.weather[0].description}
-                        width={40}
-                        height={40}
-                      />
+                      <CardItem translateZ={100}>
+                        <Image
+                          src={weatherIcon}
+                          alt={entry.weather[0].description}
+                          width={40}
+                          height={40}
+                        />
+                      </CardItem>
                       <p>{temperature}°C</p>
                     </CardItem>
                   </CardBody>
@@ -125,16 +133,18 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
                   <CardBody>
                     <CardItem
                       translateZ={50}
-                      className="border p-4 rounded-xl flex flex-col items-center gap-4"
+                      className="hoverGlow border p-4 rounded-xl flex flex-col items-center gap-4"
                     >
                       <p>{formattedTime}</p>
-                      <Image
-                        src="/assets/direction.png"
-                        alt="Wind direction"
-                        width={40}
-                        height={40}
-                        style={{ transform: `rotate(${windDirection}deg)` }}
-                      />
+                      <CardItem translateZ={100}>
+                        <Image
+                          src="/assets/direction.png"
+                          alt="Wind direction"
+                          width={40}
+                          height={40}
+                          style={{ transform: `rotate(${windDirection}deg)` }}
+                        />
+                      </CardItem>
                       <p>{windSpeed} m/s</p>
                     </CardItem>
                   </CardBody>

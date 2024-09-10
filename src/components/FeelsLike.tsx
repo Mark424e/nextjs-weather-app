@@ -1,18 +1,23 @@
 "use client";
 
-import { WeatherData } from "@/types/weather";
 import { Thermometer } from "lucide-react";
+
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+
+import { useHoverGlow } from "@/hooks/useHoverGlow";
+
+import { WeatherData } from "@/types/weather";
 
 interface FeelsLikeProps {
   weather: WeatherData;
 }
 
 const FeelsLike: React.FC<FeelsLikeProps> = ({ weather }) => {
+  useHoverGlow();
   return (
     <CardContainer>
       <CardBody>
-        <CardItem className="p-8 border rounded-3xl" translateZ={50}>
+        <CardItem className="hoverGlow p-8 border rounded-3xl" translateZ={50}>
           <div className="mb-8">
             <div className="flex justify-between items-center">
               <p className="text-text/30">Feels Like</p>

@@ -1,18 +1,23 @@
 "use client";
 
-import { WeatherData } from "@/types/weather";
 import { Droplets } from "lucide-react";
+
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+
+import { useHoverGlow } from "@/hooks/useHoverGlow";
+
+import { WeatherData } from "@/types/weather";
 
 interface HumidityProps {
   weather: WeatherData;
 }
 
 const Humidity: React.FC<HumidityProps> = ({ weather }) => {
+  useHoverGlow();
   return (
     <CardContainer>
       <CardBody>
-        <CardItem className="p-8 border rounded-3xl" translateZ={50}>
+        <CardItem className="hoverGlow p-8 border rounded-3xl" translateZ={50}>
           <div className="mb-8">
             <div className="flex justify-between items-center">
               <p className="text-text/30">Humidity</p>

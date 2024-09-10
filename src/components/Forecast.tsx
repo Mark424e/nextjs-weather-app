@@ -1,14 +1,20 @@
 "use client";
 
-import { ForecastData } from "@/types/weather";
 import Image from "next/image";
+
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+
+import { useHoverGlow } from "@/hooks/useHoverGlow";
+
+import { ForecastData } from "@/types/weather";
 
 interface ForecastProps {
   forecast: ForecastData;
 }
 
 const Forecast: React.FC<ForecastProps> = ({ forecast }) => {
+  useHoverGlow();
+
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
 
@@ -29,7 +35,7 @@ const Forecast: React.FC<ForecastProps> = ({ forecast }) => {
   );
 
   return (
-    <CardContainer className="border p-8 rounded-3xl">
+    <CardContainer className="hoverGlow border p-8 rounded-3xl">
       {" "}
       <h2 className="text-xl font-bold mb-4">5-Day Forecast</h2>
       <CardBody className="space-y-4">

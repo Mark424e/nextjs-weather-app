@@ -1,14 +1,19 @@
 "use client";
 
-import { WeatherData } from "@/types/weather";
 import { Moon, Sun } from "lucide-react";
+
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+
+import { useHoverGlow } from "@/hooks/useHoverGlow";
+
+import { WeatherData } from "@/types/weather";
 
 interface SunriseSunsetProps {
   weather: WeatherData;
 }
 
 const SunriseSunset: React.FC<SunriseSunsetProps> = ({ weather }) => {
+  useHoverGlow();
   const convertToLocalTime = (timestamp: number, timezoneOffset: number) => {
     const date = new Date((timestamp + timezoneOffset) * 1000);
     return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
@@ -20,7 +25,7 @@ const SunriseSunset: React.FC<SunriseSunsetProps> = ({ weather }) => {
     <div className="lg:col-span-2">
       <CardContainer>
         <CardBody>
-          <CardItem className="p-8 border rounded-3xl" translateZ={50}>
+          <CardItem className="hoverGlow p-8 border rounded-3xl" translateZ={50}>
             <div className="mb-8">
               <div>
                 <p>Sunrise & Sunset</p>
