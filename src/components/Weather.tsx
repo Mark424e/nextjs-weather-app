@@ -33,7 +33,7 @@ export default function Weather({ city }: WeatherProps) {
   }, [city]);
 
   if (!weather) {
-    return <p>No weather data available.</p>;
+    return "";
   }
 
   const weatherIcon = `/assets/${weather.weather[0].icon}.png`;
