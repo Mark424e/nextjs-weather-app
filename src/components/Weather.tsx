@@ -35,10 +35,6 @@ export default function Weather({ city }: WeatherProps) {
     getWeather();
   }, [city]);
 
-  if (loading) {
-    return <p className="text-center">Loading...</p>;
-  }
-
   if (!weather) {
     return <p>No weather data available.</p>;
   }
@@ -62,8 +58,8 @@ export default function Weather({ city }: WeatherProps) {
   return (
     <CardContainer className="hoverGlow border p-8 rounded-3xl h-fit">
       <CardBody className="flex flex-col justify-between gap-4">
-        <div className="border-b pb-4">
-          <h2 className="text-xl font-bold mb-4">Now</h2>
+        <div className="border-b pb-4 space-y-4">
+          <h2 className="text-xl font-bold">Now</h2>
           <CardItem
             translateZ={100}
             className="grid grid-cols-2 items-center gap-4"

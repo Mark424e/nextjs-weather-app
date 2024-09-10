@@ -10,6 +10,7 @@ import { WeatherData, AirQualityData, ForecastData } from "@/types/weather";
 import Forecast from "@/components/Forecast";
 import HourlyForecast from "@/components/HourlyForecast";
 import Footer from "@/components/Footer";
+import Loading from "./loading";
 
 export default function Home() {
   const [city, setCity] = useState("Copenhagen"); // Start with default city
@@ -24,6 +25,8 @@ export default function Home() {
     const getWeatherAndAirQuality = async () => {
       setLoading(true);
       setError(null);
+
+      await new Promise((resolve) => setTimeout(resolve, 2000))
 
       const weatherData = await fetchWeatherData(city);
       if (typeof weatherData === "string") {
@@ -76,7 +79,7 @@ export default function Home() {
       <Header onSearch={handleSearch} />{" "}
       <div className="md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 my-10 space-y-8 md:space-y-0">
         {loading ? (
-          <p>Loading...</p>
+          <Loading />
         ) : error ? (
           <p className="text-red-500">{error}</p>
         ) : (
