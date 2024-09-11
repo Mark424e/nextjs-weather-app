@@ -14,14 +14,14 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
 
   return (
     <header>
-      <div className="grid grid-cols-1 md:grid-cols-3 justify-between items-center">
-        <div>
+      <div className="flex md:grid md:grid-cols-3 justify-between items-center gap-8 md:gap-0">
+        <div className="hidden md:block">
           <h1
             onClick={handleRefresh}
-            className="hidden md:block text-2xl font-bold cursor-pointer w-fit"
+            className="text-2xl font-bold cursor-pointer w-fit"
           >Weather App</h1>
         </div>
-        <div>
+        <div className="flex-1">
           <SearchBar onSearch={onSearch} />
         </div>
         <div className="grid justify-end">

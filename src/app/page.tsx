@@ -77,14 +77,14 @@ export default function Home() {
   return (
     <main className="p-10">
       <Header onSearch={handleSearch} />{" "}
-      <div className="md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 my-10 space-y-8 md:space-y-0">
+      <div className="md:grid xl:grid-cols-4 gap-8 my-10 space-y-8 md:space-y-0">
         {loading ? (
           <Loading />
         ) : error ? (
           <p className="text-red-500">{error}</p>
         ) : (
           <>
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col lg:grid grid-cols-2 xl:flex gap-8">
               {weather && <Weather city={city} />}
               {forecastError ? (
                 <p className="text-red-500">{forecastError}</p>
@@ -93,7 +93,7 @@ export default function Home() {
               )}
             </div>
 
-            <div className="col-span-3 flex flex-col gap-8">
+            <div className="xl:col-span-3 flex flex-col gap-8">
               {weather && airQuality && (
                 <>
                   <WeatherDetails weather={weather} airQuality={airQuality} />

@@ -21,7 +21,7 @@ const WeatherDetails: React.FC<WeatherDetailsProps> = ({
   return (
     <div className="lg:col-span-3 h-fit">
       <h2 className="text-xl font-bold mb-4">Today&apos;s Highlights</h2>
-      <div className="flex flex-col lg:grid lg:grid-cols-4 gap-8">
+      <div className="flex flex-col lg:grid grid-cols-4 gap-4">
         <AirQuality airQuality={airQuality} />
         <SunriseSunset weather={weather} />
         <Humidity weather={weather} />

@@ -38,7 +38,7 @@ const AirQuality: React.FC<AirQualityProps> = ({ airQuality }) => {
   const backgroundColorClass = getBackgroundColorClass(aqiDescription);
 
   return (
-    <div className="lg:col-span-2">
+    <div className="col-span-4 lg:col-span-2">
       <CardContainer>
         <CardBody>
           <CardItem className="hoverGlow p-8 border rounded-3xl" translateZ={50}>
@@ -52,7 +52,7 @@ const AirQuality: React.FC<AirQualityProps> = ({ airQuality }) => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col lg:flex-row justify-between lg:items-center space-y-4 md:space-y-0 mb-8">
+            <div className="flex flex-col md:flex-row justify-between md:items-center space-y-4 md:space-y-0 mb-8">
               <div>
                 <Wind className="hidden md:block min-h-[3.5rem] min-w-[3.5rem]" />
               </div>

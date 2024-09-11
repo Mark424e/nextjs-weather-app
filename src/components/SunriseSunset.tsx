@@ -22,7 +22,7 @@ const SunriseSunset: React.FC<SunriseSunsetProps> = ({ weather }) => {
   const timezoneOffset = weather.timezone;
 
   return (
-    <div className="lg:col-span-2">
+    <div className="col-span-4 lg:col-span-2">
       <CardContainer>
         <CardBody>
           <CardItem
