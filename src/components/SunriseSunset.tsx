@@ -26,7 +26,7 @@ const SunriseSunset: React.FC<SunriseSunsetProps> = ({ weather }) => {
       <CardContainer>
         <CardBody>
           <CardItem
-            className="hoverGlow p-8 border rounded-3xl"
+            className="hoverGlow p-8 border bg-card dark:bg-none rounded-3xl"
             translateZ={50}
           >
             <div className="mb-8">

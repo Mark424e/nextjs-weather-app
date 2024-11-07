@@ -84,7 +84,7 @@ export default function Home() {
           <p className="text-red-500">{error}</p>
         ) : (
           <>
-            <div className="flex flex-col lg:grid grid-cols-2 xl:flex gap-8">
+            <div className="flex flex-col justify-end lg:grid grid-cols-2 xl:flex gap-8">
               {weather && <Weather city={city} />}
               {forecastError ? (
                 <p className="text-red-500">{forecastError}</p>

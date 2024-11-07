@@ -92,7 +92,7 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
                   <CardBody>
                     <CardItem
                       translateZ={50}
-                      className="hoverGlow border p-4 rounded-xl flex flex-col items-center gap-4"
+                      className="hoverGlow border bg-card dark:bg-none p-4 rounded-xl flex flex-col items-center gap-4"
                     >
                       <p>{formattedTime}</p>
                       <CardItem translateZ={100}>
@@ -133,7 +133,7 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({ city }) => {
                   <CardBody>
                     <CardItem
                       translateZ={50}
-                      className="hoverGlow border p-4 rounded-xl flex flex-col items-center gap-4"
+                      className="hoverGlow border bg-card dark:bg-none p-4 rounded-xl flex flex-col items-center gap-4"
                     >
                       <p>{formattedTime}</p>
                       <CardItem translateZ={100}>

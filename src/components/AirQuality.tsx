@@ -41,7 +41,7 @@ const AirQuality: React.FC<AirQualityProps> = ({ airQuality }) => {
     <div className="col-span-4 lg:col-span-2">
       <CardContainer>
         <CardBody>
-          <CardItem className="hoverGlow p-8 border rounded-3xl" translateZ={50}>
+          <CardItem className="hoverGlow p-8 border bg-card dark:bg-none rounded-3xl" translateZ={50}>
             <div className="mb-8">
               <div className="flex flex-col md:justify-between md:flex-row md:items-center space-y-4 md:space-y-0">
                 <p>Air Quality Index</p>

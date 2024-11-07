@@ -17,7 +17,7 @@ const Humidity: React.FC<HumidityProps> = ({ weather }) => {
   return (
     <CardContainer>
       <CardBody>
-        <CardItem className="hoverGlow p-8 border rounded-3xl" translateZ={50}>
+        <CardItem className="hoverGlow p-8 border bg-card dark:bg-none rounded-3xl" translateZ={50}>
           <div className="mb-8">
             <div className="flex justify-between items-center">
               <p className="text-text/30">Humidity</p>
